@@ -15,3 +15,94 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .notice.notice-alt.notice-error.is-dismissible {
     display: none;
 }
+
+#adminmenuwrap {
+    z-index: 999999; /* +1 */
+}
+
+/* Red color */
+#adminmenu li a:focus div.wp-menu-image:before, #adminmenu li.opensub div.wp-menu-image:before, #adminmenu li:hover div.wp-menu-image:before,
+#adminmenu .wp-submenu a:focus, #adminmenu .wp-submenu a:hover, #adminmenu a:hover, #adminmenu li.menu-top>a:focus,
+#wpadminbar .ab-top-menu>li.hover>.ab-item, #wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item:focus, #wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item, #wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item:focus {
+    color: #fb6874;
+}
+
+.stackable-logo {
+    width: 50px;
+    margin-top: 2px; 
+    margin: 0 auto; 
+    display: block;
+}
+.stackable-welcome {
+    padding: 15px; 
+    color: #fff; 
+    font-size: 15px; 
+    line-height: 1.4em;
+    text-align: center;
+    font-weight: bold;
+}
+.stackable-note {
+    padding: 15px;
+    color: #eee;
+}
+
+.menu-item-container .dashicons-before:before {
+    content: "\f116";
+}
+.menu-item-blog-posts .dashicons-before:before {
+    content: "\f509";
+}
+.menu-item-feature .dashicons-before:before {
+    content: "\f226";
+}
+.menu-item-accordion .dashicons-before:before {
+    content: "\f164";
+}
+.menu-item-image-box .dashicons-before:before {
+    content: "\f232";
+}
+.menu-item-feature-grid .dashicons-before:before {
+    content: "\f180";
+}
+.menu-item-icon-list .dashicons-before:before {
+    content: "\f203";
+}
+.menu-item-cta .dashicons-before:before {
+    content: "\f339";
+}
+.menu-item-card .dashicons-before:before {
+    content: "\f175";
+}
+.menu-item-header .dashicons-before:before {
+    content: "\f535";
+}
+.menu-item-count-up .dashicons-before:before {
+    content: "\f238";
+}
+.menu-item-video-popup .dashicons-before:before {
+    content: "\f236";
+}
+.menu-item-pricing-box .dashicons-before:before {
+    content: "\f524";
+}
+.menu-item-testimonial .dashicons-before:before {
+    content: "\f130";
+}
+.menu-item-team-member .dashicons-before:before {
+    content: "\f307";
+}
+.menu-item-notification .dashicons-before:before {
+    content: "\f348";
+}
+.menu-item-number-box .dashicons-before:before {
+    content: "\f180";
+}
+.menu-item-expand .dashicons-before:before {
+    content: "\f347";
+}
+.menu-item-button .dashicons-before:before {
+    content: "\f310";
+}
+.menu-item-blockquote .dashicons-before:before {
+    content: "\f122";
+}

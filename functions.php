@@ -289,23 +289,102 @@ function frontenberg_remove_toolbar_node($wp_admin_bar) {
 	$wp_admin_bar->remove_node('search');
 	$wp_admin_bar->remove_node('wp-logo-external');
 	$wp_admin_bar->remove_node('about');
+	$wp_admin_bar->remove_node('edit');
+	// $wp_admin_bar->add_menu( array(
+	// 	'id'    => 'wp-logo',
+	// 	'title' => '<span class="ab-icon"></span>',
+	// 	'href'  => home_url(),
+    //     'meta'  => array(
+	// 		'class' => 'wp-logo',
+	// 		'title' => __( 'Stackable Demo' ),            
+	// 	),
+	// ) );
+
+	$svg = <<< SVG
+<svg xmlns="http://www.w3.org/2000/svg" class="ugb-stackable-gradient" height="0" width="0" style="opacity: 0;">
+	<defs>
+		<linearGradient id="stackable-gradient">
+			<stop offset="0%" stop-color="#ab5af1" stop-opacity="1"></stop>
+			<stop offset="100%" stop-color="#fb6874" stop-opacity="1"></stop>
+		</linearGradient>
+	</defs>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="url(#stackable-gradient)" style="margin-top: 2px" width="20">
+	<path d="M64.08,136L23,176.66a4.75,4.75,0,0,0,3.53,8.15l86.91,0.14Z"/>
+	<path d="M177.91,128.39a17,17,0,0,0-5-12.07L71.39,14.72h0L26.61,59.5a17,17,0,0,0-5,12.05h0a17,17,0,0,0,5,12.05L128.16,185.2v-0.07l0,0,44.76-44.76a17,17,0,0,0,5-12h0Z"/>
+	<path d="M172.95,14.69l-86.83,0,49.42,49.62,40.92-41.16A5,5,0,0,0,172.95,14.69Z"/>
+</svg>
+SVG;
+	// $wp_admin_bar->add_menu( array(
+	// 	'id'    => 'stackable-site',
+	// 	'title' => '<span class="ab-icon">' . $svg . '</span> Stackable',
+	// 	'href'  => home_url(),
+    //     'meta'  => array(
+	// 		'title' => __( 'Stackable' ),
+	// 	),
+	// ) );
 	$wp_admin_bar->add_menu( array(
-		'id'    => 'wp-logo',
-		'title' => '<span class="ab-icon"></span>',
-		'href'  => home_url(),
+		'parent' => 'top-secondary',
+		'id'    => 'free-download',
+		'title' => 'Free Download',
+		'href'  => 'https://downloads.wordpress.org/plugin/stackable-ultimate-gutenberg-blocks.latest-stable.zip',
         'meta'  => array(
-			'class' => 'wp-logo',
-			'title' => __('FrontenBerg'),            
+			'style' => 'right',
+			'title' => __( 'Free Download' ),
 		),
-	));
+	) );
 	$wp_admin_bar->add_menu( array(
-		'id'    => 'frontenderg',
-		'title' => 'Frontenberg',
-		'href'  => home_url(),
-		'meta'  => array(
-			'title' => __('FrontenBerg'),            
-        ),
-    ));
+		'parent' => 'top-secondary',
+		'id'    => 'blog',
+		'title' => 'Blog',
+		'href'  => 'https://wpstackable.com/blog',
+        'meta'  => array(
+			'style' => 'right',
+			'title' => __( 'Blog' ),
+		),
+	) );
+	$wp_admin_bar->add_menu( array(
+		'parent' => 'top-secondary',
+		'id'    => 'premium',
+		'title' => 'Premium',
+		'href'  => 'https://wpstackable.com/premium',
+        'meta'  => array(
+			'style' => 'right',
+			'title' => __( 'Premium' ),
+		),
+	) );
+	$wp_admin_bar->add_menu( array(
+		'parent' => 'top-secondary',
+		'id'    => 'philosophy',
+		'title' => 'Philosophy',
+		'href'  => 'https://wpstackable.com/blog/the-stackable-philosophy/',
+        'meta'  => array(
+			'style' => 'right',
+			'title' => __( 'Philosophy' ),
+		),
+	) );
+	$wp_admin_bar->add_menu( array(
+		'parent' => 'top-secondary',
+		'id'    => 'about',
+		'title' => 'About',
+		'href'  => 'https://wpstackable.com/blog/welcome-to-stackable/',
+        'meta'  => array(
+			'style' => 'right',
+			'title' => __( 'About' ),
+		),
+	) );
+
+	
+
+// 'data:image/svg+xml;base64,' . base64_encode( $svg ) // Stackable icon.
+	// $wp_admin_bar->add_menu( array(
+	// 	'id'    => 'frontenderg',
+	// 	'title' => 'Frontenberg',
+	// 	'href'  => home_url(),
+	// 	'meta'  => array(
+	// 		'title' => __('FrontenBerg'),            
+    //     ),
+    // ));
 	
 }
 add_action('admin_bar_menu', 'frontenberg_remove_toolbar_node', 999);
@@ -492,3 +571,23 @@ function frontenberg_get_block_editor_server_block_settings() {
  
     return $blocks;
 }
+
+/**
+ * Add slugs to custom menu items
+ * 
+ * @see https://gist.github.com/likesalmon/f1f1184fdabd6931aaf5
+ */
+function add_slug_class_to_menu_item($output){
+	$ps = get_option('permalink_structure');
+	if(!empty($ps)){
+	  $idstr = preg_match_all('/<li id="menu-item-(\d+)/', $output, $matches);
+	  foreach($matches[1] as $mid){
+		$id = get_post_meta($mid, '_menu_item_object_id', true);
+		$slug = basename(get_permalink($id));
+		$output = preg_replace('/menu-item-'.$mid.'">/', 'menu-item-'.$mid.' menu-item-'.$slug.'">', $output, 1);
+	  }
+	}
+	return $output;
+  }
+  add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
+  
