@@ -33,6 +33,7 @@ add_action( 'init', function() {
 		wp_enqueue_style( 'l10n' );
 		wp_enqueue_style( 'buttons' );
 		wp_enqueue_style( 'frontenberg', get_template_directory_uri() . '/style.css' );
+		wp_enqueue_style( 'stackable-fonts', stackable_fonts_url(), array(), null );
 		
 		if ( ! function_exists('gutenberg_editor_scripts_and_styles') ) {
 			wp_enqueue_script( 'heartbeat' );
@@ -588,6 +589,44 @@ function add_slug_class_to_menu_item($output){
 	  }
 	}
 	return $output;
-  }
-  add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
+}
+add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
   
+if ( ! function_exists( 'stackable_fonts_url' ) ) :
+	/**
+	 * Register Google fonts for Stackable.
+	 *
+	 * Create your own stackable_fonts_url() function to override in a child theme.
+	 *
+	 * @return string Google fonts URL for the theme.
+	 */
+	function stackable_fonts_url() {
+		$fonts_url = '';
+		$fonts     = array();
+		$subsets   = 'latin,latin-ext';
+	
+		/* translators: If there are characters in your language that are not supported by Poppins, translate this to 'off'. Do not translate into your own language. */
+		if ( 'off' !== esc_html_x( 'on', 'Poppins font: on or off', 'stackable' ) ) {
+			$fonts[] = 'Poppins:400,700';
+		}
+	
+		/* translators: If there are characters in your language that are not supported by Lato, translate this to 'off'. Do not translate into your own language. */
+		if ( 'off' !== esc_html_x( 'on', 'Lato font: on or off', 'stackable' ) ) {
+			$fonts[] = 'Lato:400,700,400italic,700italic';
+		}
+	
+		/* translators: If there are characters in your language that are not supported by Inconsolata, translate this to 'off'. Do not translate into your own language. */
+		// if ( 'off' !== esc_html_x( 'on', 'Inconsolata font: on or off', 'stackable' ) ) {
+		// 	$fonts[] = 'Inconsolata:400,700';
+		// }
+	
+		if ( $fonts ) {
+			$fonts_url = add_query_arg( array(
+				'family' => urlencode( implode( '|', $fonts ) ),
+				'subset' => urlencode( $subsets ),
+			), 'https://fonts.googleapis.com/css' );
+		}
+	
+		return $fonts_url;
+	}
+endif;
