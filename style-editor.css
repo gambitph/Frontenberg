@@ -1,0 +1,66 @@
+/* Main column width */
+.edit-post-visual-editor.edit-post-visual-editor .editor-post-title__block,
+.edit-post-visual-editor.edit-post-visual-editor .editor-default-block-appender,
+.edit-post-visual-editor.edit-post-visual-editor .editor-block-list__block {
+    max-width: 900px;
+}
+
+/* Main column width */
+.wp-block {
+    max-width: 900px;
+}
+
+/* Editor styles */
+.editor-block-list__block, .editor-block-list__block p {
+    color: #7a7c84;
+	font-family: Lato, sans-serif !important;
+}
+.edit-post-visual-editor .editor-post-title__block .editor-post-title__input,
+.edit-post-visual-editor .editor-block-list__block h1,
+.edit-post-visual-editor .editor-block-list__block h2,
+.edit-post-visual-editor .editor-block-list__block h3,
+.edit-post-visual-editor .editor-block-list__block h4,
+.edit-post-visual-editor .editor-block-list__block h5,
+.edit-post-visual-editor .editor-block-list__block h6 {
+    color: #2c313f;
+    font-family: Poppins, sans-serif;
+    font-weight: bold;
+}
+.edit-post-visual-editor .editor-post-title__block .editor-post-title__input,
+.edit-post-visual-editor .editor-block-list__block h1 {
+    font-size: 49px;
+    font-size: 3.0625rem;
+    line-height: 1.2245;
+}
+.edit-post-visual-editor .editor-block-list__block h2 {
+    font-size: 40px;
+    font-size: 2.5rem;
+    line-height: 1.125;
+}
+.edit-post-visual-editor .editor-block-list__block h3 {
+    font-size: 32px;
+    font-size: 2rem;
+    line-height: 1.1719;
+}
+.edit-post-visual-editor .editor-block-list__block h4 {
+    font-size: 25px;
+    font-size: 1.5625rem;
+    line-height: 1.2;
+}
+.edit-post-visual-editor .editor-block-list__block h5 {
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+.edit-post-visual-editor .editor-block-list__block h6 {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.40625;
+}
+
+.edit-post-visual-editor .editor-block-list__block[data-align=full] {
+    max-width: none !important;
+}
+.edit-post-visual-editor .editor-block-list__block[data-align=wide] {
+    max-width: 1100px !important;
+}
