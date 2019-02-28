@@ -183,3 +183,56 @@ Use it to make something cool, have fun, and share what you've learned with othe
     --s-header-menu-text-hover-color: #a73a43;
     --s-primary-color: #ab5af1;
 }
+
+.stackable-intro-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,.8);
+    z-index: 1002;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.stackable-intro-bg.hide {
+    pointer-events: none;
+    opacity: 0;
+    z-index: -100;
+}
+.stackable-intro-wrapper {
+    width: 85%;
+    max-width: 600px;
+    min-height: 300px;
+    background: linear-gradient(to right, #ab5af1, #fb6874);
+    margin: 35px;
+    padding: 35px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+.stackable-intro-wrapper p {
+    font-size: 16px;
+    max-width: 380px;
+    margin: 0 auto 1em;
+}
+.stackable-intro-wrapper h3 {
+    color: #fff;
+    font-size: 2em;
+    line-height: 1.2em;
+}
+.stackable-intro-bg .stackable-logo {
+    width: 100px;
+    height: auto;
+}
+.stackable-intro-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 25px;
+    width: 25px;
+    display: block;
+}
