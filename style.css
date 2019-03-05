@@ -4,7 +4,7 @@ Theme URI: https://tomjn.com
 Author: Tom J Nowell
 Author URI: https://tomjn.com/
 Description: Creates a site with a Gutenberg editor instance on the frontend
-Version: 1.1
+Version: 1.1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
     z-index: 1000; /* +1 */
 }
 #wpadminbar {
+    z-index: 999 !important;
+}
+.nux-dot-tip:not(.is-mobile).is-center, .nux-dot-tip:not(.is-mobile).is-left, .nux-dot-tip:not(.is-mobile).is-right {
     z-index: 999 !important;
 }
 
